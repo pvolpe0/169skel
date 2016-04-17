@@ -13,6 +13,7 @@ Skin::Skin() {
     
     WorldMtx.Identity();
     Load("test.skel");
+    printf("hello");
     
 }
 
