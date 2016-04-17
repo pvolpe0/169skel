@@ -17,6 +17,7 @@
 		2CA53FA70F1E9E8700575E78 /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CA53FA60F1E9E8700575E78 /* GLUT.framework */; };
 		2CA53FA90F1E9E9600575E78 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CA53FA80F1E9E9600575E78 /* OpenGL.framework */; };
 		6E744ED21CC312F2009D3F9C /* skin.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6E744ED11CC312F2009D3F9C /* skin.cpp */; };
+		6E744ED51CC319D1009D3F9C /* vertex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6E744ED41CC319D1009D3F9C /* vertex.cpp */; };
 		6E7B75941CB4583F00D93419 /* skeleton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6E7B75931CB4583F00D93419 /* skeleton.cpp */; };
 		6E7B75971CB4DD2400D93419 /* joint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6E7B75961CB4DD2400D93419 /* joint.cpp */; };
 		6E7B759A1CB4DF9400D93419 /* DOF.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6E7B75991CB4DF9400D93419 /* DOF.cpp */; };
@@ -55,6 +56,8 @@
 		2CA53FA80F1E9E9600575E78 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = /System/Library/Frameworks/OpenGL.framework; sourceTree = "<absolute>"; };
 		6E744ED01CC312E4009D3F9C /* skin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = skin.h; sourceTree = "<group>"; };
 		6E744ED11CC312F2009D3F9C /* skin.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = skin.cpp; sourceTree = "<group>"; };
+		6E744ED31CC3196B009D3F9C /* vertex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = vertex.h; sourceTree = "<group>"; };
+		6E744ED41CC319D1009D3F9C /* vertex.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = vertex.cpp; sourceTree = "<group>"; };
 		6E7B75931CB4583F00D93419 /* skeleton.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = skeleton.cpp; sourceTree = "<group>"; };
 		6E7B75951CB4584B00D93419 /* skeleton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = skeleton.h; sourceTree = "<group>"; };
 		6E7B75961CB4DD2400D93419 /* joint.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = joint.cpp; sourceTree = "<group>"; };
@@ -119,6 +122,8 @@
 				6E7B759B1CB4DF9D00D93419 /* DOF.h */,
 				6E744ED01CC312E4009D3F9C /* skin.h */,
 				6E744ED11CC312F2009D3F9C /* skin.cpp */,
+				6E744ED31CC3196B009D3F9C /* vertex.h */,
+				6E744ED41CC319D1009D3F9C /* vertex.cpp */,
 			);
 			name = Source;
 			sourceTree = "<group>";
@@ -197,6 +202,7 @@
 				6E744ED21CC312F2009D3F9C /* skin.cpp in Sources */,
 				2CA53F7D0F1E9DEA00575E78 /* tester.cpp in Sources */,
 				6E7B75971CB4DD2400D93419 /* joint.cpp in Sources */,
+				6E744ED51CC319D1009D3F9C /* vertex.cpp in Sources */,
 				2CA53F7E0F1E9DEA00575E78 /* token.cpp in Sources */,
 				2CA53F7F0F1E9DEA00575E78 /* vector3.cpp in Sources */,
 			);
