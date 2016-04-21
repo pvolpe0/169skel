@@ -64,7 +64,11 @@
       <CommandLineArguments>
          <CommandLineArgument
             argument = "dragon.skel"
-            isEnabled = "YES">
+            isEnabled = "NO">
+         </CommandLineArgument>
+         <CommandLineArgument
+            argument = "tube.skel tube_smooth.skin"
+            isEnabled = "NO">
          </CommandLineArgument>
          <CommandLineArgument
             argument = "wasp.skel"

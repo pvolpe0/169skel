@@ -59,20 +59,6 @@ void Joint::Update( Matrix34 parent) {
 bool Joint::Load(Tokenizer token) {
     
     
-   /* offset.Set(0,0,0);
-    boxmin.Set(-0.1,-0.1,-0.1);
-    boxmax.Set(0.1,0.1,0.1);
-    dofs.push_back(new DOF(0, -100000, 100000)); // x
-    dofs.push_back(new DOF(0, -100000, 100000)); // y
-    dofs.push_back(new DOF(0, -100000, 100000)); // z
-    pose.Set(0,0,0);
-
-    */
-    
- /*   printf("current X Min,Max: %f, %f\n", dofs[0]->min, dofs[0]->max);
-    printf("current Y Min,Max: %f, %f\n", dofs[1]->min, dofs[1]->max);
-    printf("current Z Min,Max: %f, %f\n", dofs[2]->min, dofs[2]->max);
-*/
     
     token.FindToken("{");
     
@@ -120,11 +106,9 @@ bool Joint::Load(Tokenizer token) {
             rotZlimit.x = token.GetFloat();
             rotZlimit.y = token.GetFloat();
             
-            //printf("current Z Min,Max: %f, %f\n", dofs[2]->min, dofs[2]->max);
 
             
             dofs[2]->SetMinMax(rotZlimit.x, rotZlimit.y);
-           // printf("dof set Z Min,Max: %f, %f\n", dofs[2]->min, dofs[2]->max);
 
 
         }
@@ -137,9 +121,7 @@ bool Joint::Load(Tokenizer token) {
             dofs[1]->SetValue(pose.y);
             dofs[2]->SetValue(pose.z);
             
-           // printf("\n\n\nx rot value, min, max: %f, %f, %f\n", dofs[0]->GetValue(), dofs[0]->min, dofs[0]->max);
-           // printf("y rot value, min, max: %f, %f, %f\n", dofs[1]->GetValue(), dofs[1]->min, dofs[1]->max);
-           // printf("z rot value, min, max: %f, %f, %f\n", dofs[2]->GetValue(), dofs[1]->min, dofs[1]->max);
+
 
 
         }
@@ -155,6 +137,16 @@ bool Joint::Load(Tokenizer token) {
     
 }
 
+std::vector<Joint *> Joint::AddJointToVector(std::vector<Joint *> vec) {
+    vec.push_back(this);
+    
+    for (int i = 0; i < children.size(); i ++) {
+        vec = children[i]->AddJointToVector(vec);
+    }
+    
+    return vec;
+}
+
 ////////////////////////////////////////////////////////////////////////////////
 
 void Joint::Draw() {
@@ -166,6 +158,11 @@ void Joint::Draw() {
     for (int i = 0; i < children.size(); i++)
         children[i]->Draw();
 
+}
+
+Matrix34 Joint::GetWorldMatrix() {
+    
+    return WorldMtx;
 }
 
 void Joint::AddChild( Joint * child) {

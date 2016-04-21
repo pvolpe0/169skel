@@ -12,13 +12,17 @@
 Skeleton::Skeleton() {
     
     WorldMtx.Identity();
-    Load("test.skel");
+    Load("wasp.skel");
     
 }
 
 Skeleton::Skeleton(const char *file) {
     WorldMtx.Identity();
-    Load(file);
+    
+    char path[] = "/Users/pablo/Desktop/";
+    strcat( path,file);
+    Load(path);
+
     
 }
 
@@ -46,12 +50,26 @@ bool Skeleton::Load(const char *file) {
     // Parse tree
     root = new Joint();
     root->Load(*token);
+    SetupJointVector();
     
     //Finish
     token->Close();
     return true;
 }
 
+Matrix34 Skeleton::GetWorldMatrix(int i) {
+    
+    return joints[i]->GetWorldMatrix();
+}
+
+void Skeleton::SetupJointVector() {
+    joints = root->AddJointToVector(joints);
+}
+
+std::vector<Joint *> Skeleton::GetJointsVector() {
+    
+    return joints;
+}
 ////////////////////////////////////////////////////////////////////////////////
 
 void Skeleton::Draw() {

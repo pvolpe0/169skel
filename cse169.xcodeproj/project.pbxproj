@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 44;
+	objectVersion = 46;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -16,6 +16,7 @@
 		2CA53F7F0F1E9DEA00575E78 /* vector3.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2CA53F770F1E9DEA00575E78 /* vector3.cpp */; };
 		2CA53FA70F1E9E8700575E78 /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CA53FA60F1E9E8700575E78 /* GLUT.framework */; };
 		2CA53FA90F1E9E9600575E78 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CA53FA80F1E9E9600575E78 /* OpenGL.framework */; };
+		6E3960E21CC59BD600357F81 /* triangle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6E3960E11CC59BD600357F81 /* triangle.cpp */; };
 		6E744ED21CC312F2009D3F9C /* skin.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6E744ED11CC312F2009D3F9C /* skin.cpp */; };
 		6E744ED51CC319D1009D3F9C /* vertex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6E744ED41CC319D1009D3F9C /* vertex.cpp */; };
 		6E7B75941CB4583F00D93419 /* skeleton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6E7B75931CB4583F00D93419 /* skeleton.cpp */; };
@@ -54,10 +55,12 @@
 		2CA53F780F1E9DEA00575E78 /* vector3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = vector3.h; sourceTree = "<group>"; };
 		2CA53FA60F1E9E8700575E78 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = /System/Library/Frameworks/GLUT.framework; sourceTree = "<absolute>"; };
 		2CA53FA80F1E9E9600575E78 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = /System/Library/Frameworks/OpenGL.framework; sourceTree = "<absolute>"; };
+		6E3960E11CC59BD600357F81 /* triangle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = triangle.cpp; sourceTree = "<group>"; };
 		6E744ED01CC312E4009D3F9C /* skin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = skin.h; sourceTree = "<group>"; };
 		6E744ED11CC312F2009D3F9C /* skin.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = skin.cpp; sourceTree = "<group>"; };
 		6E744ED31CC3196B009D3F9C /* vertex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = vertex.h; sourceTree = "<group>"; };
 		6E744ED41CC319D1009D3F9C /* vertex.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = vertex.cpp; sourceTree = "<group>"; };
+		6E744ED61CC31BBD009D3F9C /* triangle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = triangle.h; sourceTree = "<group>"; };
 		6E7B75931CB4583F00D93419 /* skeleton.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = skeleton.cpp; sourceTree = "<group>"; };
 		6E7B75951CB4584B00D93419 /* skeleton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = skeleton.h; sourceTree = "<group>"; };
 		6E7B75961CB4DD2400D93419 /* joint.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = joint.cpp; sourceTree = "<group>"; };
@@ -66,6 +69,7 @@
 		6E7B759B1CB4DF9D00D93419 /* DOF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DOF.h; sourceTree = "<group>"; };
 		6E7B759C1CB5104F00D93419 /* test.skel */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test.skel; sourceTree = "<group>"; };
 		6E7B759D1CB51B5B00D93419 /* test.skel */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test.skel; sourceTree = "<group>"; };
+		6EE11EE91CC80CE20002DE35 /* wasp.skin.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = wasp.skin.rtf; sourceTree = "<group>"; };
 		8DD76F6C0486A84900D96B5E /* cse169 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = cse169; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6859E8B029090EE04C91782 /* cse169.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = cse169.1; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -103,6 +107,7 @@
 				2CA53F6B0F1E9DEA00575E78 /* camera.cpp */,
 				2CA53F6C0F1E9DEA00575E78 /* camera.h */,
 				2CA53F6D0F1E9DEA00575E78 /* core.cpp */,
+				6EE11EE91CC80CE20002DE35 /* wasp.skin.rtf */,
 				2CA53F6E0F1E9DEA00575E78 /* core.h */,
 				2CA53F6F0F1E9DEA00575E78 /* cube.cpp */,
 				2CA53F700F1E9DEA00575E78 /* cube.h */,
@@ -124,6 +129,8 @@
 				6E744ED11CC312F2009D3F9C /* skin.cpp */,
 				6E744ED31CC3196B009D3F9C /* vertex.h */,
 				6E744ED41CC319D1009D3F9C /* vertex.cpp */,
+				6E744ED61CC31BBD009D3F9C /* triangle.h */,
+				6E3960E11CC59BD600357F81 /* triangle.cpp */,
 			);
 			name = Source;
 			sourceTree = "<group>";
@@ -171,9 +178,10 @@
 		08FB7793FE84155DC02AAC07 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastUpgradeCheck = 0730;
 			};
 			buildConfigurationList = 1DEB923508733DC60010E9CD /* Build configuration list for PBXProject "cse169" */;
-			compatibilityVersion = "Xcode 3.0";
+			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 1;
 			knownRegions = (
@@ -194,6 +202,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2CA53F790F1E9DEA00575E78 /* camera.cpp in Sources */,
+				6E3960E21CC59BD600357F81 /* triangle.cpp in Sources */,
 				2CA53F7A0F1E9DEA00575E78 /* core.cpp in Sources */,
 				6E7B75941CB4583F00D93419 /* skeleton.cpp in Sources */,
 				2CA53F7B0F1E9DEA00575E78 /* cube.cpp in Sources */,
@@ -244,8 +253,10 @@
 		1DEB923608733DC60010E9CD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ENABLE_TESTABILITY = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				ONLY_ACTIVE_ARCH = YES;
 				PREBINDING = NO;
 				SDKROOT = "$(DEVELOPER_SDK_DIR)/MacOSX10.5.sdk";
 			};
@@ -254,10 +265,6 @@
 		1DEB923708733DC60010E9CD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = (
-					ppc,
-					i386,
-				);
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				PREBINDING = NO;

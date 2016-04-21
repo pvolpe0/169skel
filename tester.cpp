@@ -4,7 +4,7 @@
 
 #include "tester.h"
 
-#define WINDOWTITLE	"Project 1: Skeleton"
+#define WINDOWTITLE	"Project 2: Skin"
 
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -45,6 +45,27 @@ Tester::Tester(int argc,char **argv) {
 
 	// Background color
 	glClearColor( 0., 0., 0., 1. );
+    
+    GLfloat lightColor0[] = {0.9f, 0.05f, 0.05f, 1.0f}; //Color (0.8, 0.1, 0.1)
+    GLfloat lightPos0[] = {40.0f, 0.0f, 80.0f, 1.0f}; //Positioned at (4, 0, 8)
+    glLightfv(GL_LIGHT0, GL_DIFFUSE, lightColor0);
+    glLightfv(GL_LIGHT0, GL_POSITION, lightPos0);
+    
+    //Add positioned light
+    
+    GLfloat lightColor1[] = {0.1f, 0.8f, 0.1f, 1.0f}; //Color (0.1, 0.8, 0.1)
+    GLfloat lightPos1[] = {40.0f, 0.0f, -20.0f, 1.0f}; //Positioned at (-4, 0, -2)
+    glLightfv(GL_LIGHT1, GL_DIFFUSE, lightColor1);
+    glLightfv(GL_LIGHT1, GL_POSITION, lightPos1);
+    
+    
+    glEnable(GL_DEPTH_TEST);
+    glDepthFunc(GL_LEQUAL);
+    glEnable(GL_LIGHTING);
+    glShadeModel(GL_SMOOTH);
+    glEnable(GL_LIGHT0);
+    glEnable(GL_LIGHT1);
+
 
 	// Callbacks
 	glutDisplayFunc( display );
@@ -60,10 +81,17 @@ Tester::Tester(int argc,char **argv) {
 	// Initialize components
     
     //printf("Arguements: %d", argc);
-    if (argc == 1)
-        Skel = new Skeleton();
-    else
+    if (argc == 3) {
+        
         Skel = new Skeleton(argv[1]);
+        skin = new Skin(Skel, argv[2], Skel->GetJointsVector());
+
+    }
+    else {
+        Skel = new Skeleton();
+        skin = new Skin(Skel, Skel->GetJointsVector());
+    }
+    
     Cam.SetAspect(float(WinX)/float(WinY));
 }
 
@@ -80,6 +108,7 @@ void Tester::Update() {
 	// Update the components in the world
 	Cam.Update();
 	Skel->Update();
+    skin->Update();
 
 	// Tell glut to re-display the scene
 	glutSetWindow(WindowHandle);
@@ -105,7 +134,8 @@ void Tester::Draw() {
 
 	// Draw components
 	Cam.Draw();		// Sets up projection & viewing matrices
-	Skel->Draw();
+	//Skel->Draw();
+    skin->Draw();
 
 	// Finish drawing scene
 	glFinish();

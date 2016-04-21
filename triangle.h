@@ -1,45 +1,38 @@
 ////////////////////////////////////////
-// skel.h
+// triangle.h
 ////////////////////////////////////////
 
-#ifndef CSE169_SKELETON_H
-#define CSE169_SKELETON_H
+#ifndef CSE169_TRIANGLE_H
+#define CSE169_TRIANGLE_H
 
 #include "core.h"
-#include "joint.h"
 #include "vector3.h"
+#include "vertex.h"
 #include "matrix34.h"
 
 ////////////////////////////////////////////////////////////////////////////////
 
-
-class Skeleton {
+class Triangle {
 public:
-    Skeleton();
-    Skeleton(const char *);
+    Triangle(int, int, int);
     
-    void Update();
-    bool Load(const char*);
+    void SetVertices(Vertex, Vertex, Vertex);
+    
+    int GetVertex(int);
     void Draw();
-    
-    void SetupJointVector();
-    std::vector<Joint *> GetJointsVector();
-    Matrix34 GetWorldMatrix(int);
-    
-    std::vector<Joint*> joints;
-    
     
 private:
     // Constants
-    Joint* root;
-    
-    
+    int index[3];
+    Vertex vertices[3];
     
     // Variables
     Matrix34 WorldMtx;
+    
 };
 
 ////////////////////////////////////////////////////////////////////////////////
+
 
 
 #endif

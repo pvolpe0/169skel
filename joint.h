@@ -22,7 +22,8 @@ public:
     void Draw();
     bool Load(Tokenizer);
     void AddChild(Joint*);
-    
+    std::vector<Joint *> AddJointToVector(std::vector<Joint *>);
+    Matrix34 GetWorldMatrix();
     
 private:
     // Constants
@@ -35,6 +36,9 @@ private:
     std::vector<Joint*> children;
     //std::vector<Joint*> sibling;
     //Joint* parent;
+    
+    
+
     
     
     // Variables
