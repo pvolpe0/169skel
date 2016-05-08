@@ -134,7 +134,7 @@ void Tester::Draw() {
 
 	// Draw components
 	Cam.Draw();		// Sets up projection & viewing matrices
-	//Skel->Draw();
+	Skel->Draw();
     skin->Draw();
 
 	// Finish drawing scene
@@ -161,6 +161,8 @@ void Tester::Resize(int x,int y) {
 ////////////////////////////////////////////////////////////////////////////////
 
 void Tester::Keyboard(int key,int x,int y) {
+    
+    
 	switch(key) {
 		case 0x1b:		// Escape
 			Quit();
@@ -168,6 +170,18 @@ void Tester::Keyboard(int key,int x,int y) {
 		case 'r':
 			Reset();
 			break;
+        case 'j':
+            Skel->decrementDOFSelect();
+            break;
+        case 'l':
+            Skel->incrementDOFSelect();
+            break;
+        case 'k':
+            Skel->decrementDOFValue();
+            break;
+        case 'i':
+            Skel->incrementDOFValue();
+            break;
 	}
 }
 

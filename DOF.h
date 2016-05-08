@@ -15,10 +15,13 @@ class DOF {
 public:
     DOF(float, float, float);
     
-    void SetValue(float);
+    bool SetValue(float);
     float GetValue();
     void SetMinMax(float, float);
     float min, max;
+    
+    bool incrementValue();
+    bool decrementValue();
     
 private:
     // Constants

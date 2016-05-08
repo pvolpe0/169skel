@@ -12,17 +12,66 @@
 Skeleton::Skeleton() {
     
     WorldMtx.Identity();
-    Load("wasp.skel");
+    Load("/Users/pablo/Desktop/cse169/files/wasp.skel");
     
 }
 
 Skeleton::Skeleton(const char *file) {
     WorldMtx.Identity();
     
-    char path[] = "/Users/pablo/Desktop/";
-    strcat( path,file);
-    Load(path);
+    
+    char result[100];   // array to hold the result.
+    char path[] = "/Users/pablo/Desktop/cse169/files/";
+    
 
+    
+    strcpy(result,path); // copy string one into the result.
+    strcat(result,file);
+    Load(result);
+
+    
+}
+
+void Skeleton::incrementDOFSelect() {
+    
+    DOFSelect++;
+    
+    
+    if (DOFSelect > joints.size() * 3)
+        DOFSelect = joints.size() * 3;
+    printf("increment DOFSelect: %d\n", DOFSelect);
+
+    
+}
+
+void Skeleton::decrementDOFSelect() {
+    
+    DOFSelect--;
+    
+
+    
+    if (DOFSelect < 0)
+        DOFSelect = 0;
+    
+    printf("decrement DOFSelect: %d\n", DOFSelect);
+
+}
+
+void Skeleton::incrementDOFValue(){
+    
+    int dof = DOFSelect % 3;
+    int joint = DOFSelect / 3;
+    
+    joints[joint]->incrementDOF(dof);
+    
+}
+
+void Skeleton::decrementDOFValue(){
+    
+    int dof = DOFSelect % 3;
+    int joint = DOFSelect / 3;
+    
+    joints[joint]->decrementDOF(dof);
     
 }
 

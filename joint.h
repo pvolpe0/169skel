@@ -23,6 +23,11 @@ public:
     bool Load(Tokenizer);
     void AddChild(Joint*);
     std::vector<Joint *> AddJointToVector(std::vector<Joint *>);
+    
+    void incrementDOF(int);
+    void decrementDOF(int);
+
+    
     Matrix34 GetWorldMatrix();
     
 private:
@@ -30,6 +35,8 @@ private:
     Vector3 offset, boxmin, boxmax, pose;
     Vector3 rotXlimit, rotYlimit, rotZlimit;
     char name[256];
+    
+    int currentDOF;
     
     
     std::vector<DOF*> dofs;

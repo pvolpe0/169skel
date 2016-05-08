@@ -28,12 +28,18 @@ public:
     
     std::vector<Joint*> joints;
     
+    void incrementDOFSelect();
+    void decrementDOFSelect();
+    void incrementDOFValue();
+    void decrementDOFValue();
+    
     
 private:
     // Constants
     Joint* root;
     
-    
+    int DOFSelect;
+
     
     // Variables
     Matrix34 WorldMtx;

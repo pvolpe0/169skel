@@ -15,7 +15,7 @@ Skin::Skin( Skeleton * skelptr, std::vector<Joint*> vec) {
     WorldMtx.Identity();
     skel = skelptr;
     joints = vec;
-    Load("/Users/pablo/Desktop/wasp.skin");
+    Load("/Users/pablo/Desktop/cse169/files/wasp.skin");
     
 }
 
@@ -23,9 +23,14 @@ Skin::Skin(Skeleton * skelptr, const char *file, std::vector<Joint *> vec) {
     WorldMtx.Identity();
     joints = vec;
     
-    char path[] = "/Users/pablo/Desktop/";
-    strcat( path,file);
-    Load(path);
+    char result[100];   // array to hold the result.
+    char path[] = "/Users/pablo/Desktop/cse169/files/";
+    
+    
+    
+    strcpy(result,path); // copy string one into the result.
+    strcat(result,file);
+    Load(result);
     
 }
 
@@ -38,15 +43,20 @@ void Skin::Update() {
     std::vector<Matrix34> MMatrices;
     Matrix34 m;
     for (int i = 0; i < numJoints; i++) {
+        
         m.Dot(skel->GetWorldMatrix(i), bindingInvMs[i]);
         MMatrices.push_back(m);
     }
     //loop through all vertices, compute blended positions
     
+    blendVertices.clear();
+    
     for (int i = 0; i < numVerts; i++) {
         Vertex vtx;
         Vector3 blendPos;
         Vector3 blendNorm;
+        
+        
         std::vector<int> tmpIndex = vertices[i]->GetJointIndexVec();
         std::vector<float> tmpWeight = vertices[i]->GetWeightVec();
         for(int j = 0; j < tmpWeight.size(); j++) {
@@ -67,8 +77,11 @@ void Skin::Update() {
         vtx.SetNormal(blendNorm.x, blendNorm.y, blendNorm.z);
         
         blendVertices.push_back(vtx);
+
         
     }
+    
+    std::cout << blendVertices.size() << std::endl;
     
     for (int i = 0; i < numTriangles; i++) {
         triangles[i]->SetVertices(blendVertices[triangles[i]->GetVertex(0)],

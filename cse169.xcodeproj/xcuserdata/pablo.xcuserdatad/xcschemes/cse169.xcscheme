@@ -63,15 +63,11 @@
       </BuildableProductRunnable>
       <CommandLineArguments>
          <CommandLineArgument
-            argument = "dragon.skel"
-            isEnabled = "NO">
-         </CommandLineArgument>
-         <CommandLineArgument
             argument = "tube.skel tube_smooth.skin"
-            isEnabled = "NO">
+            isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
-            argument = "wasp.skel"
+            argument = "wasp.skel wasp.skin"
             isEnabled = "NO">
          </CommandLineArgument>
       </CommandLineArguments>

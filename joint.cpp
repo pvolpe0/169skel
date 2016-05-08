@@ -18,6 +18,7 @@ Joint::Joint() {
     dofs.push_back(new DOF(0, -100000, 100000)); // y
     dofs.push_back(new DOF(0, -100000, 100000)); // z
     pose.Set(0,0,0);
+    currentDOF = 0;
  
 
     
@@ -145,6 +146,50 @@ std::vector<Joint *> Joint::AddJointToVector(std::vector<Joint *> vec) {
     }
     
     return vec;
+}
+
+void Joint::incrementDOF(int dof) {
+    if ( dofs[dof]->incrementValue() ) {
+        
+        Matrix34 rot;
+        
+        switch (dof) {
+                
+            case 0:
+                rot.MakeRotateX(0.5);
+                break;
+            case 1:
+                rot.MakeRotateY(0.5);
+                break;
+            case 2:
+                rot.MakeRotateZ(0.5);
+                break;
+        }
+        
+        LocalMtx.Dot(rot, LocalMtx);
+    }
+}
+
+void Joint::decrementDOF(int dof) {
+    if ( dofs[dof]->decrementValue() ) {
+        
+        Matrix34 rot;
+        
+        switch (dof) {
+                
+            case 0:
+                rot.MakeRotateX(-0.5);
+                break;
+            case 1:
+                rot.MakeRotateY(-0.5);
+                break;
+            case 2:
+                rot.MakeRotateZ(-0.5);
+                break;
+        }
+        
+        LocalMtx.Dot(rot, LocalMtx);
+    }
 }
 
 ////////////////////////////////////////////////////////////////////////////////

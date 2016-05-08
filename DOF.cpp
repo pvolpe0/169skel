@@ -13,18 +13,37 @@ DOF::DOF(float value, float min, float max) {
     this->min = min;
     this->max = max;
 
+
 }
 
 ////////////////////////////////////////////////////////////////////////////////
 
-void DOF::SetValue( float val ) {
+bool DOF::SetValue( float val ) {
     
-    if (val > max)
+    if (val > max) {
         value = max;
-    else if (val < min)
+        return false;
+    }
+    else if (val < min) {
         value = min;
-    else
+        return false;
+    }
+    else {
         value = val;
+        return true;
+    }
+}
+
+bool DOF::decrementValue() {
+    
+    
+    return SetValue(GetValue() - 0.05);
+}
+
+bool DOF::incrementValue() {
+    
+    
+    return SetValue(GetValue() + 0.05);
 }
 
 ////////////////////////////////////////////////////////////////////////////////
