@@ -81,7 +81,7 @@ Tester::Tester(int argc,char **argv) {
 	// Initialize components
     
     //printf("Arguements: %d", argc);
-    if (argc == 3) {
+   /* if (argc == 3) {
         
         Skel = new Skeleton(argv[1]);
         skin = new Skin(Skel, argv[2], Skel->GetJointsVector());
@@ -91,6 +91,7 @@ Tester::Tester(int argc,char **argv) {
         Skel = new Skeleton();
         skin = new Skin(Skel, Skel->GetJointsVector());
     }
+    */
     
     Cam.SetAspect(float(WinX)/float(WinY));
 }
@@ -107,8 +108,8 @@ Tester::~Tester() {
 void Tester::Update() {
 	// Update the components in the world
 	Cam.Update();
-	Skel->Update();
-    skin->Update();
+	//Skel->Update();
+    //skin->Update();
 
 	// Tell glut to re-display the scene
 	glutSetWindow(WindowHandle);
@@ -134,8 +135,8 @@ void Tester::Draw() {
 
 	// Draw components
 	Cam.Draw();		// Sets up projection & viewing matrices
-	Skel->Draw();
-    skin->Draw();
+	//Skel->Draw();
+    //skin->Draw();
 
 	// Finish drawing scene
 	glFinish();
@@ -171,16 +172,16 @@ void Tester::Keyboard(int key,int x,int y) {
 			Reset();
 			break;
         case 'j':
-            Skel->decrementDOFSelect();
+           // Skel->decrementDOFSelect();
             break;
         case 'l':
-            Skel->incrementDOFSelect();
+            //Skel->incrementDOFSelect();
             break;
         case 'k':
-            Skel->decrementDOFValue();
+           //Skel->decrementDOFValue();
             break;
         case 'i':
-            Skel->incrementDOFValue();
+           // Skel->incrementDOFValue();
             break;
 	}
 }
