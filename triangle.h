@@ -9,25 +9,28 @@
 #include "vector3.h"
 #include "vertex.h"
 #include "matrix34.h"
+#include "particle.h"
 
 ////////////////////////////////////////////////////////////////////////////////
 
 class Triangle {
 public:
-    Triangle(int, int, int);
-    
-    void SetVertices(Vertex, Vertex, Vertex);
-    
-    int GetVertex(int);
+    Triangle(Particle*, Particle*, Particle*);
     void Draw();
+
+    void ComputeForce(float, float, Vector3);
     
 private:
-    // Constants
-    int index[3];
-    Vertex vertices[3];
+
+    Particle * a;
+    Particle * b;
+    Particle * c;
     
     // Variables
-    Matrix34 WorldMtx;
+
+
+    Vector3 Normal;
+
     
 };
 

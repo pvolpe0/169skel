@@ -4,7 +4,9 @@
 
 #include "tester.h"
 
-#define WINDOWTITLE	"Project 2: Skin"
+
+
+#define WINDOWTITLE	"Project 4: Cloth"
 
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -44,9 +46,9 @@ Tester::Tester(int argc,char **argv) {
 	glutSetWindow( WindowHandle );
 
 	// Background color
-	glClearColor( 0., 0., 0., 1. );
+	glClearColor( .144, .195, .212, 1. );
     
-    GLfloat lightColor0[] = {0.9f, 0.05f, 0.05f, 1.0f}; //Color (0.8, 0.1, 0.1)
+   /* GLfloat lightColor0[] = {0.9f, 0.05f, 0.05f, 1.0f}; //Color (0.8, 0.1, 0.1)
     GLfloat lightPos0[] = {40.0f, 0.0f, 80.0f, 1.0f}; //Positioned at (4, 0, 8)
     glLightfv(GL_LIGHT0, GL_DIFFUSE, lightColor0);
     glLightfv(GL_LIGHT0, GL_POSITION, lightPos0);
@@ -56,15 +58,15 @@ Tester::Tester(int argc,char **argv) {
     GLfloat lightColor1[] = {0.1f, 0.8f, 0.1f, 1.0f}; //Color (0.1, 0.8, 0.1)
     GLfloat lightPos1[] = {40.0f, 0.0f, -20.0f, 1.0f}; //Positioned at (-4, 0, -2)
     glLightfv(GL_LIGHT1, GL_DIFFUSE, lightColor1);
-    glLightfv(GL_LIGHT1, GL_POSITION, lightPos1);
+    glLightfv(GL_LIGHT1, GL_POSITION, lightPos1);*/
     
     
     glEnable(GL_DEPTH_TEST);
     glDepthFunc(GL_LEQUAL);
-    glEnable(GL_LIGHTING);
+   // glEnable(GL_LIGHTING);
     glShadeModel(GL_SMOOTH);
-    glEnable(GL_LIGHT0);
-    glEnable(GL_LIGHT1);
+   // glEnable(GL_LIGHT0);
+   // glEnable(GL_LIGHT1);
 
 
 	// Callbacks
@@ -80,18 +82,10 @@ Tester::Tester(int argc,char **argv) {
 
 	// Initialize components
     
-    //printf("Arguements: %d", argc);
-   /* if (argc == 3) {
-        
-        Skel = new Skeleton(argv[1]);
-        skin = new Skin(Skel, argv[2], Skel->GetJointsVector());
-
-    }
-    else {
-        Skel = new Skeleton();
-        skin = new Skin(Skel, Skel->GetJointsVector());
-    }
-    */
+    wind = new Wind(40 * Vector3(1, 1, 1));
+    
+    cloth = new Cloth(7, 10, 1.5);
+    cloth->SetWind(wind);
     
     Cam.SetAspect(float(WinX)/float(WinY));
 }
@@ -108,8 +102,8 @@ Tester::~Tester() {
 void Tester::Update() {
 	// Update the components in the world
 	Cam.Update();
-	//Skel->Update();
-    //skin->Update();
+
+    cloth->Update(0.01);
 
 	// Tell glut to re-display the scene
 	glutSetWindow(WindowHandle);
@@ -135,8 +129,8 @@ void Tester::Draw() {
 
 	// Draw components
 	Cam.Draw();		// Sets up projection & viewing matrices
-	//Skel->Draw();
-    //skin->Draw();
+
+    cloth->Draw();
 
 	// Finish drawing scene
 	glFinish();
@@ -171,19 +165,47 @@ void Tester::Keyboard(int key,int x,int y) {
 		case 'r':
 			Reset();
 			break;
-        case 'j':
-           // Skel->decrementDOFSelect();
+        case 'w':
+            wind->incrementVelocity();
+            break;
+        case 's':
+            wind->decrementVelocity();
+            break;
+        case 'q':
+            wind->togglePower();
+            break;
+        case 'b':
+            cloth->toggleSelector();
+            break;
+        case 'n':
+            cloth->decrementSelector();
+            break;
+        case 'm':
+            cloth->incrementSelector();
+            break;
+        case 'h':
+            cloth->toggleFixed();
             break;
         case 'l':
-            //Skel->incrementDOFSelect();
+            cloth->decrementZ();
+            break;
+        case 'p':
+            cloth->incrementZ();
             break;
         case 'k':
-           //Skel->decrementDOFValue();
+            cloth->decrementY();
+            break;
+        case 'o':
+            cloth->incrementY();
+            break;
+        case 'j':
+            cloth->decrementX();
             break;
         case 'i':
-           // Skel->incrementDOFValue();
+            cloth->incrementX();
             break;
-	}
+    
+    }
 }
 
 ////////////////////////////////////////////////////////////////////////////////

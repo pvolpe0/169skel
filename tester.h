@@ -7,9 +7,8 @@
 
 #include "core.h"
 #include "camera.h"
-#include "cube.h"
-#include "skeleton.h"
-#include "skin.h"
+#include "cloth.h"
+#include "wind.h"
 
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -41,9 +40,8 @@ private:
 
 	// Components
 	Camera Cam;
-	//SpinningCube Cube;
-    Skeleton* Skel;
-    Skin* skin;
+    Cloth * cloth;
+    Wind * wind;
 };
 
 ////////////////////////////////////////////////////////////////////////////////
