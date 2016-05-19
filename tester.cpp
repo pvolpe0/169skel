@@ -83,6 +83,7 @@ Tester::Tester(int argc,char **argv) {
 	// Initialize components
     
     wind = new Wind(40 * Vector3(1, 1, 1));
+    ground = new Ground();
     
     cloth = new Cloth(7, 10, 1.5);
     cloth->SetWind(wind);
@@ -131,6 +132,7 @@ void Tester::Draw() {
 	Cam.Draw();		// Sets up projection & viewing matrices
 
     cloth->Draw();
+    ground->Draw();
 
 	// Finish drawing scene
 	glFinish();

@@ -29,6 +29,15 @@ void Particle::Update( float deltaTime) {
         Force.Zero();
     }
     
+    if (Position.y < -0.8) {
+        
+        Position.y = -0.8 - Position.y;
+        Velocity.y = -0.000001 * Velocity.y;
+        Velocity.x = 0.15 * Velocity.x;
+        Velocity.z = 0.15 * Velocity.z;
+        
+    }
+    
 }
 
 float Particle::GetMass() {

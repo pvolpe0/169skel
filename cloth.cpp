@@ -58,8 +58,8 @@ Cloth::Cloth(int width, int height, float mass) {
     
     
     
-    particles[0][0]->SetFixed(true);
-    particles[0][Width - 1]->SetFixed(true);
+    //particles[0][0]->SetFixed(true);
+    //particles[0][Width - 1]->SetFixed(true);
 
     
     
