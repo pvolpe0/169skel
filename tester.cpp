@@ -48,25 +48,29 @@ Tester::Tester(int argc,char **argv) {
 	// Background color
 	glClearColor( .144, .195, .212, 1. );
     
-   /* GLfloat lightColor0[] = {0.9f, 0.05f, 0.05f, 1.0f}; //Color (0.8, 0.1, 0.1)
-    GLfloat lightPos0[] = {40.0f, 0.0f, 80.0f, 1.0f}; //Positioned at (4, 0, 8)
+    GLfloat lightColor0[] = {1.0f, 1.0f, 1.0f, 1.0f}; //Color (0.8, 0.1, 0.1)
+    GLfloat lightPos0[] = {4.0f, 1.0f, -2.0f, 1.0f}; //Positioned at (4, 0, 8)
     glLightfv(GL_LIGHT0, GL_DIFFUSE, lightColor0);
     glLightfv(GL_LIGHT0, GL_POSITION, lightPos0);
     
-    //Add positioned light
+    
+   // GLfloat lightPos0[] = {1.0f, 1.0f, 1.0f, 1.0f}; //Positioned at (4, 0, 8)
+    
+    //Add positioned ligt
     
     GLfloat lightColor1[] = {0.1f, 0.8f, 0.1f, 1.0f}; //Color (0.1, 0.8, 0.1)
     GLfloat lightPos1[] = {40.0f, 0.0f, -20.0f, 1.0f}; //Positioned at (-4, 0, -2)
     glLightfv(GL_LIGHT1, GL_DIFFUSE, lightColor1);
-    glLightfv(GL_LIGHT1, GL_POSITION, lightPos1);*/
+    glLightfv(GL_LIGHT1, GL_POSITION, lightPos1);
     
     
     glEnable(GL_DEPTH_TEST);
     glDepthFunc(GL_LEQUAL);
-   // glEnable(GL_LIGHTING);
+    glEnable(GL_LIGHTING);
+    glEnable(GL_COLOR_MATERIAL);
     glShadeModel(GL_SMOOTH);
-   // glEnable(GL_LIGHT0);
-   // glEnable(GL_LIGHT1);
+    glEnable(GL_LIGHT0);
+    glEnable(GL_LIGHT1);
 
 
 	// Callbacks
@@ -85,7 +89,7 @@ Tester::Tester(int argc,char **argv) {
     wind = new Wind(40 * Vector3(1, 1, 1));
     ground = new Ground();
     
-    cloth = new Cloth(7, 10, 1.5);
+    cloth = new Cloth(15, 20, 1.5);
     cloth->SetWind(wind);
     
     Cam.SetAspect(float(WinX)/float(WinY));
@@ -117,7 +121,6 @@ void Tester::Reset() {
 	Cam.Reset();
 	Cam.SetAspect(float(WinX)/float(WinY));
 
-	//Cube.Reset();
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -133,6 +136,7 @@ void Tester::Draw() {
 
     cloth->Draw();
     ground->Draw();
+    wind->Draw();
 
 	// Finish drawing scene
 	glFinish();
@@ -164,18 +168,36 @@ void Tester::Keyboard(int key,int x,int y) {
 		case 0x1b:		// Escape
 			Quit();
 			break;
-		case 'r':
+		case 'z':
 			Reset();
 			break;
         case 'w':
-            wind->incrementVelocity();
+            wind->incrementXVelocity();
             break;
         case 's':
-            wind->decrementVelocity();
+            wind->decrementXVelocity();
+            break;
+        case 'e':
+            wind->incrementYVelocity();
+            break;
+        case 'd':
+            wind->decrementYVelocity();
+            break;
+        case 'r':
+            wind->incrementZVelocity();
+            break;
+        case 'f':
+            wind->decrementZVelocity();
             break;
         case 'q':
             wind->togglePower();
             break;
+        case 'a':
+            wind->zeroWind();
+            break;
+            
+        
+        
         case 'b':
             cloth->toggleSelector();
             break;
@@ -205,6 +227,15 @@ void Tester::Keyboard(int key,int x,int y) {
             break;
         case 'i':
             cloth->incrementX();
+            break;
+        case 'v':
+            cloth->showSD = !cloth->showSD;
+            break;
+        case 'c':
+            cloth->showP = !cloth->showP;
+            break;
+        case 'x':
+            cloth->fixAll();
             break;
     
     }

@@ -33,6 +33,11 @@ void Triangle::ComputeForce(float density, float drag, Vector3 airVelocity) {
     
     float area = Normal.Mag() / 2;
     Normal.Normalize();
+    
+    a->addVecToNorm(Normal);
+    b->addVecToNorm(Normal);
+    c->addVecToNorm(Normal);
+    
 
     //std::cout << "\n\nold area: " << area << std::endl;
     
@@ -58,20 +63,35 @@ void Triangle::ComputeForce(float density, float drag, Vector3 airVelocity) {
     
 }
 
+void Triangle::Update() {
+    
+    
+}
+
 
 void Triangle::Draw() {
     
-    glColor3f(1.0, 0.0, 0.0);
+    glColor3f(1.0, 0.5, 0.5);
     glBegin(GL_TRIANGLES);
     
+    
+    glNormal3f(a->GetNormal().x,
+               a->GetNormal().y,
+               a->GetNormal().z );
     glVertex3f(a->GetPosition().x,
                a->GetPosition().y,
                a->GetPosition().z );
 
+    glNormal3f(b->GetNormal().x,
+               b->GetNormal().y,
+               b->GetNormal().z );
     glVertex3f(b->GetPosition().x,
                b->GetPosition().y,
                b->GetPosition().z );
 
+    glNormal3f(c->GetNormal().x,
+               c->GetNormal().y,
+               c->GetNormal().z );
     glVertex3f(c->GetPosition().x,
                c->GetPosition().y,
                c->GetPosition().z );

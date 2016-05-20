@@ -17,6 +17,7 @@ class Triangle {
 public:
     Triangle(Particle*, Particle*, Particle*);
     void Draw();
+    void Update();
 
     void ComputeForce(float, float, Vector3);
     

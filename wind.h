@@ -27,8 +27,14 @@ public:
     
     Wind();
     Wind(Vector3);
-    void incrementVelocity();
-    void decrementVelocity();
+    void Draw();
+    void incrementXVelocity();
+    void decrementXVelocity();
+    void incrementYVelocity();
+    void decrementYVelocity();
+    void incrementZVelocity();
+    void decrementZVelocity();
+    void zeroWind();
     void togglePower();
     void setDirection(Vector3);
     

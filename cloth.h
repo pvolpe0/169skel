@@ -44,11 +44,14 @@ class Cloth {
     int selectR, selectC;
     
     bool editMode;
+    bool fixedAll;
     
    
 
     
 public:
+    
+    bool showSD, showP;
     
     Cloth(int, int, float);
     void toggleSelector();
@@ -64,6 +67,7 @@ public:
     void incrementY();
     void decrementZ();
     void incrementZ();
+    void fixAll();
 };
 
 

@@ -44,7 +44,7 @@ void::SpringDamper::ComputeForce() {
 void SpringDamper::Draw() {
     
     glColor3f(0.9, 0.9, 0.9);
-    glLineWidth(4.0);
+    glLineWidth(1.0);
     
     
     glBegin(GL_LINES);

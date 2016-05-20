@@ -29,15 +29,33 @@ void Particle::Update( float deltaTime) {
         Force.Zero();
     }
     
-    if (Position.y < -0.8) {
+    if (Position.y < -0.4) {
         
-        Position.y = -0.8 - Position.y;
-        Velocity.y = -0.000001 * Velocity.y;
-        Velocity.x = 0.15 * Velocity.x;
-        Velocity.z = 0.15 * Velocity.z;
+        Position.y = -0.4;
+        Velocity.y = -0.1 * Velocity.y;
+        Velocity.x = 0.95 * Velocity.x;
+        Velocity.z = 0.95 * Velocity.z;
         
     }
     
+    
+}
+
+
+
+void Particle::zeroNormal(){
+    
+    Normal.Zero();
+}
+
+void Particle::normalizeNormal() {
+    
+    Normal.Normalize();
+}
+
+void Particle::addVecToNorm(Vector3 x){
+    
+    Normal += x;
 }
 
 float Particle::GetMass() {
@@ -65,10 +83,16 @@ Vector3 Particle::GetAcceleration(){
     return Acceleration;
 }
 
+Vector3 Particle::GetNormal() {
+    
+    return Normal;
+}
+
 
 void Particle::SetFixed(bool a) {
     
     fixed = a;
+    Force.Zero();
 }
 
 void Particle::toggleFixed() {
@@ -115,7 +139,7 @@ void Particle::decrementZ() {
 void Particle::Draw() {
     
     if (fixed)
-        glColor3f(0.0f,1.0f,0.0f); //green
+        glColor3f(0.0f,0.0f,1.0f); //green
     else
         glColor3f(1.0f,1.0f,1.0f); //white
     glPointSize(8.0f);//set point size to 10 pixels
@@ -124,6 +148,19 @@ void Particle::Draw() {
     glVertex3f(Position.x,
                    Position.y,
                    Position.z);
+    
+    glEnd();
+    
+    glLineWidth(2.0);
+    glBegin(GL_LINES);
+    
+    glVertex3f(Position.x,
+               Position.y,
+               Position.z);
+    glVertex3f(Position.x + Normal.x / 20,
+               Position.y + Normal.y / 20,
+               Position.z + Normal.z / 20);
+    
     
     glEnd();
 }

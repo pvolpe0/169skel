@@ -15,21 +15,21 @@ void Ground::Draw() {
 
     glColor3f(0.5f, 0.5f, 0.5f);
     glBegin(GL_QUADS);
-    glVertex3f(0.0f,
-               0.0f,
-               0.0f);
     
-    glVertex3f(5.0f,
-               0.0f,
-               0.0f);
+    // ground
+    glNormal3f(0, 1, 0);
+    glVertex3f(-5.0f, -0.401f, -5.0f);
     
-    glVertex3f(0.0f,
-               0.0f,
-               5.0f);
+    glNormal3f(0, 1, 0);
+    glVertex3f(-5.0f, -0.401f, 5.0f);
     
-    glVertex3f(5.0f,
-               0.0f,
-               0.0f);
+    glNormal3f(0, 1, 0);
+    glVertex3f(5.0f, -0.401f, 5.0f);
+    
+    glNormal3f(0, 1, 0);
+    glVertex3f(5.0f, -0.401f, -5.0f);
+    
+    
     
     glEnd();
 }

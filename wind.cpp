@@ -26,23 +26,100 @@ Wind::Wind() {
     power = true;
 }
 
-void Wind::incrementVelocity() {
+void Wind::Draw() {
+    
+    glLineWidth(5.0);
+    
+    
+    glBegin(GL_LINES);
+    
+    glVertex3f(0,
+               1,
+               0);
+    
+    glVertex3f(0 + wind.x / 300,
+               1 + wind.y / 300,
+               0 + wind.z / 300);
+    
+    glEnd();
+    
+    glBegin(GL_POINTS);
+    
+    
+    glPointSize(2.0f);
+    glColor3f(0, 1, 0);
+    glVertex3f(0 + wind.x / 300,
+               1 + wind.y / 300,
+               0 + wind.z / 300);
+    
+    glPointSize(15.0f);
+    glColor3f(1, 0, 0);
+    glVertex3f(0,
+               1,
+               0);
+    
+    
+
+    
+    glEnd();
+}
+
+void Wind::incrementXVelocity() {
     
     if (power) {
-        wind += Vector3(10.0, 10.0, 10.0);
-        std::cout << "incrementing wind velocity to " << wind.Mag() << std::endl;
+        wind += Vector3(10.0, 0.0, 0.0);
     } else
         std::cout << "power not on" << std::endl;
 }
 
-void Wind::decrementVelocity() {
+void Wind::decrementXVelocity() {
     
     if (power) {
-        wind -= Vector3(10.0, 10.0, 10.0);
-        std::cout << "decrementing wind velocity to " << wind.Mag() << std::endl;
+        wind -= Vector3(10.0, 0.0, 0.0);
     } else
         std::cout << "power not on" << std::endl;
 }
+
+void Wind::incrementYVelocity() {
+    
+    if (power) {
+        wind += Vector3(0.0, 10.0, 0.0);
+    } else
+        std::cout << "power not on" << std::endl;
+}
+
+void Wind::decrementYVelocity() {
+    
+    if (power) {
+        wind -= Vector3(0.0, 10.0, 0.0);
+    } else
+        std::cout << "power not on" << std::endl;
+}
+
+void Wind::incrementZVelocity() {
+    
+    if (power) {
+        wind += Vector3(0.0, 0.0, 10.0);
+    } else
+        std::cout << "power not on" << std::endl;
+}
+
+void Wind::decrementZVelocity() {
+    
+    if (power) {
+        wind -= Vector3(0.0, 0.0, 10.0);
+    } else
+        std::cout << "power not on" << std::endl;
+}
+
+void Wind::zeroWind() {
+    
+    if (power) {
+        wind.Zero();
+    } else
+        std::cout << "power not on" << std::endl;
+}
+
 
 void Wind::togglePower() {
     

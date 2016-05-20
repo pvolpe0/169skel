@@ -15,6 +15,9 @@ Cloth::Cloth(int width, int height, float mass) {
     Mass = mass;
     
     editMode = false;
+    showSD = false;
+    showP = false;
+    fixedAll = false;
     selectR = 0;
     selectC = 0;
     
@@ -58,8 +61,6 @@ Cloth::Cloth(int width, int height, float mass) {
     
     
     
-    //particles[0][0]->SetFixed(true);
-    //particles[0][Width - 1]->SetFixed(true);
 
     
     
@@ -142,6 +143,34 @@ Cloth::Cloth(int width, int height, float mass) {
     
 }
 
+void Cloth::fixAll() {
+    
+    if (fixedAll) {
+        
+        for (int i = 0; i < Height - 1; i++) {
+            for (int j = 0; j < Width; j++) {
+                
+                particles[i][j]->SetFixed(false);
+                
+            }
+        }
+        
+    }
+    else {
+        
+        for (int i = 0; i < Height; i++) {
+            for (int j = 0; j < Width; j++) {
+                
+                particles[i][j]->SetFixed(true);
+                
+            }
+        }
+        
+    }
+    
+    fixedAll = !fixedAll;
+}
+
 void Cloth::SetWind(Wind* windObject) {
     
     wind = windObject;
@@ -217,6 +246,7 @@ void Cloth::Update(float deltaTime) {
             
             Vector3 force = gravity * particles[i][j]->GetMass(); // f=mg
             particles[i][j]->ApplyForce(force);
+            particles[i][j]->zeroNormal();
             
         }
     }
@@ -239,6 +269,14 @@ void Cloth::Update(float deltaTime) {
         triangles[i]->ComputeForce(1.0, 1.0, wind->GetWind());
     }
     
+    for (int i = 0; i < Height; i++) {
+        for (int j = 0; j < Width; j++) {
+            
+
+            particles[i][j]->normalizeNormal();
+            
+        }
+    }
     
     
     
@@ -258,19 +296,24 @@ void Cloth::Update(float deltaTime) {
 void Cloth::Draw() {
     
     
-   /* for (int i = 0; i < Height; i++) {
-        for (int j = 0; j < Width; j++) {
+    if (showP) {
+        for (int i = 0; i < Height; i++) {
+            for (int j = 0; j < Width; j++) {
             
-            particles[i][j]->Draw();
+                particles[i][j]->Draw();
             
+            }
         }
     }
-    */
-   /* for (int i = 0; i < NumSpringDampers; i++) {
+    
+    
+    if (showSD) {
+        for (int i = 0; i < NumSpringDampers; i++) {
         
-        springdampers[i]->Draw();
+            springdampers[i]->Draw();
+        }
     }
-    */
+    
     
     if (editMode) {
         
