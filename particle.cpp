@@ -41,7 +41,10 @@ void Particle::Update( float deltaTime) {
     
 }
 
-
+void Particle::ApplyForce(Vector3 a) {
+    
+    Force += a;
+}
 
 void Particle::zeroNormal(){
     

@@ -50,7 +50,7 @@
 		2CA53F780F1E9DEA00575E78 /* vector3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = vector3.h; sourceTree = "<group>"; };
 		2CA53FA60F1E9E8700575E78 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = /System/Library/Frameworks/GLUT.framework; sourceTree = "<absolute>"; };
 		2CA53FA80F1E9E9600575E78 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = /System/Library/Frameworks/OpenGL.framework; sourceTree = "<absolute>"; };
-		6E2227BD1CEC856400E7346F /* particle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = particle.h; sourceTree = "<group>"; };
+		6E0904F51CF5440A000D905D /* particle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = particle.h; sourceTree = "<group>"; };
 		6E2227BE1CEC85CF00E7346F /* particle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = particle.cpp; sourceTree = "<group>"; };
 		6E2227C01CECA36600E7346F /* cloth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cloth.h; sourceTree = "<group>"; };
 		6E2227C11CECA3BE00E7346F /* cloth.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = cloth.cpp; sourceTree = "<group>"; };
@@ -101,13 +101,13 @@
 				2CA53F6B0F1E9DEA00575E78 /* camera.cpp */,
 				2CA53F6C0F1E9DEA00575E78 /* camera.h */,
 				6E2227C11CECA3BE00E7346F /* cloth.cpp */,
+				6E0904F51CF5440A000D905D /* particle.h */,
 				6E2227C01CECA36600E7346F /* cloth.h */,
 				2CA53F6D0F1E9DEA00575E78 /* core.cpp */,
 				2CA53F6E0F1E9DEA00575E78 /* core.h */,
 				2CA53F710F1E9DEA00575E78 /* matrix34.cpp */,
 				2CA53F720F1E9DEA00575E78 /* matrix34.h */,
 				6E2227BE1CEC85CF00E7346F /* particle.cpp */,
-				6E2227BD1CEC856400E7346F /* particle.h */,
 				6E2227C31CECA75C00E7346F /* springdamper.h */,
 				6E2227C41CECA83400E7346F /* springhamper.cpp */,
 				2CA53F730F1E9DEA00575E78 /* tester.cpp */,
