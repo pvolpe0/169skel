@@ -18,16 +18,16 @@ void Ground::Draw() {
     
     // ground
     glNormal3f(0, 1, 0);
-    glVertex3f(-5.0f, -0.401f, -5.0f);
+    glVertex3f(-5.0f, -0.92f, -5.0f);
     
     glNormal3f(0, 1, 0);
-    glVertex3f(-5.0f, -0.401f, 5.0f);
+    glVertex3f(-5.0f, -0.92f, 5.0f);
     
     glNormal3f(0, 1, 0);
-    glVertex3f(5.0f, -0.401f, 5.0f);
+    glVertex3f(5.0f, -0.92f, 5.0f);
     
     glNormal3f(0, 1, 0);
-    glVertex3f(5.0f, -0.401f, -5.0f);
+    glVertex3f(5.0f, -0.92f, -5.0f);
     
     
     

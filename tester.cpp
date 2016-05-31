@@ -86,11 +86,12 @@ Tester::Tester(int argc,char **argv) {
 
 	// Initialize components
     
-    wind = new Wind(40 * Vector3(1, 1, 1));
     ground = new Ground();
     
-    cloth = new Cloth(15, 20, 1.5);
-    cloth->SetWind(wind);
+    fluid = new Fluid(3375, -1, -1, -1, 2);
+    
+    
+
     
     Cam.SetAspect(float(WinX)/float(WinY));
 }
@@ -108,7 +109,7 @@ void Tester::Update() {
 	// Update the components in the world
 	Cam.Update();
 
-    cloth->Update(0.01);
+    fluid->Update(0.01);
 
 	// Tell glut to re-display the scene
 	glutSetWindow(WindowHandle);
@@ -134,9 +135,10 @@ void Tester::Draw() {
 	// Draw components
 	Cam.Draw();		// Sets up projection & viewing matrices
 
-    cloth->Draw();
+    fluid->Draw();
     ground->Draw();
-    wind->Draw();
+
+
 
 	// Finish drawing scene
 	glFinish();
@@ -171,73 +173,7 @@ void Tester::Keyboard(int key,int x,int y) {
 		case 'z':
 			Reset();
 			break;
-        case 'w':
-            wind->incrementXVelocity();
-            break;
-        case 's':
-            wind->decrementXVelocity();
-            break;
-        case 'e':
-            wind->incrementYVelocity();
-            break;
-        case 'd':
-            wind->decrementYVelocity();
-            break;
-        case 'r':
-            wind->incrementZVelocity();
-            break;
-        case 'f':
-            wind->decrementZVelocity();
-            break;
-        case 'q':
-            wind->togglePower();
-            break;
-        case 'a':
-            wind->zeroWind();
-            break;
-            
-        
-        
-        case 'b':
-            cloth->toggleSelector();
-            break;
-        case 'n':
-            cloth->decrementSelector();
-            break;
-        case 'm':
-            cloth->incrementSelector();
-            break;
-        case 'h':
-            cloth->toggleFixed();
-            break;
-        case 'l':
-            cloth->decrementZ();
-            break;
-        case 'p':
-            cloth->incrementZ();
-            break;
-        case 'k':
-            cloth->decrementY();
-            break;
-        case 'o':
-            cloth->incrementY();
-            break;
-        case 'j':
-            cloth->decrementX();
-            break;
-        case 'i':
-            cloth->incrementX();
-            break;
-        case 'v':
-            cloth->showSD = !cloth->showSD;
-            break;
-        case 'c':
-            cloth->showP = !cloth->showP;
-            break;
-        case 'x':
-            cloth->fixAll();
-            break;
-    
+
     }
 }
 

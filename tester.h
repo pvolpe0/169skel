@@ -7,9 +7,9 @@
 
 #include "core.h"
 #include "camera.h"
-#include "cloth.h"
-#include "wind.h"
+#include "fluid.h"
 #include "ground.h"
+#include "field.h"
 
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -41,8 +41,8 @@ private:
 
 	// Components
 	Camera Cam;
-    Cloth * cloth;
-    Wind * wind;
+    
+    Fluid * fluid;
     Ground * ground;
 };
 
