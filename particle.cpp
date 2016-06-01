@@ -20,7 +20,7 @@ Particle::Particle (float m, float supportR, Vector3 p, float visco) {
     Position = p;
     Viscocity = visco;
     
-    MaxVelocity = 3 * 0.4 * 0.0238 / 0.1;
+    MaxVelocity = 2 * 0.4 * 0.0238 / 0.1;
     
     Force_other = Mass * Vector3(0, -9.8, 0);
     
@@ -210,13 +210,13 @@ void Particle::CalculatePressureForce(){
 void Particle::CalculateForces() {
     
 
-    CalculateOtherForce();
+   // CalculateOtherForce();
     CalculatePressureForce();
     CalculateViscosityForce();
     
  //   Force_viscocity.Print();
     
-    Force = 1000000 * Force_pressure + Force_viscocity + Force_other;
+    Force = 1000000 * Force_pressure +  Force_viscocity + Force_other;
     
     ApplyForce(Force);
     
@@ -259,7 +259,6 @@ void Particle::CalculateViscosityForce() {
 
 void Particle::CalculateOtherForce() {
     
-    // lol constant...for now
     
 }
 

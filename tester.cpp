@@ -59,7 +59,7 @@ Tester::Tester(int argc,char **argv) {
     //Add positioned ligt
     
     GLfloat lightColor1[] = {1.0f, 1.0f, 1.0f, 1.0f}; //Color (0.1, 0.8, 0.1)
-    GLfloat lightPos1[] = {0.0f, 0.0f, 5.0f, 1.0f}; //Positioned at (-4, 0, -2)
+    GLfloat lightPos1[] = {5.0f, 0.0f, 5.0f, 1.0f}; //Positioned at (-4, 0, -2)
     glLightfv(GL_LIGHT1, GL_DIFFUSE, lightColor1);
     glLightfv(GL_LIGHT1, GL_POSITION, lightPos1);
     
@@ -95,7 +95,7 @@ Tester::Tester(int argc,char **argv) {
     // 5) Box Length
     // 6) Particle Mass
     // 7) Particle Viscocity
-    fluid = new Fluid(500, -.5, -1, -.5, 1, 1, 0.001);
+    fluid = new Fluid(700, -.5, -1, -.5, 1, 1, 1);
 
     
     Cam.SetAspect(float(WinX)/float(WinY));
