@@ -165,12 +165,12 @@ void Particle::CalculatePressure() {
         Density += neighbor->GetMass() * W;
     }
 
-   // std::cout << Density << std::endl;
+   // std::cout << "\nDensity:" << Density << std::endl;
     
     
     Pressure = 1 * ( pow( Density / restDensity, 7) - 1);
 
-    //std::cout << Pressure << std::endl;
+  //  std::cout << "Pressure: " << Pressure << std::endl;
 
 
 }
@@ -412,8 +412,6 @@ void Particle::filterNeighbors() {
             continue;
         
         float distance = Position.Dist2(potentialNeighbor->GetPosition());
-        
-       // std::cout << distance << std::endl;
         
         if (distance < SupportRadius) {
             

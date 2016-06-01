@@ -96,7 +96,7 @@ void Fluid::Draw() {
         particles[i]->Draw();
     }
     
-    field->Draw();
+    //field->Draw();
  }
 
 void Fluid::Update(float deltaTime) {
