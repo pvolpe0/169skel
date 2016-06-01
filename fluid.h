@@ -21,6 +21,7 @@ class Fluid {
     
     
     float Mass;
+    float Viscocity;
     Field * field;
     
     // Particles
@@ -29,6 +30,8 @@ class Fluid {
     
     float xMin, xMax, yMin, yMax, zMin, zMax;
     float length;
+    
+    int debug;
     
     
     float RandomFloat(float, float);
@@ -39,11 +42,12 @@ class Fluid {
 public:
     
     
-    Fluid(int, float, float, float, float);
+    Fluid(int, float, float, float, float, float, float);
 
 
     void Update(float);
     void Draw();
+    void Reset();
 
 };
 

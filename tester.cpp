@@ -6,7 +6,7 @@
 
 
 
-#define WINDOWTITLE	"Project 4: Cloth"
+#define WINDOWTITLE	"Project 5: Final - SPH Fluids"
 
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -46,7 +46,7 @@ Tester::Tester(int argc,char **argv) {
 	glutSetWindow( WindowHandle );
 
 	// Background color
-	glClearColor( .144, .195, .212, 1. );
+	glClearColor( .242, .186, .167, 1. );
     
     GLfloat lightColor0[] = {1.0f, 1.0f, 1.0f, 1.0f}; //Color (0.8, 0.1, 0.1)
     GLfloat lightPos0[] = {4.0f, 1.0f, -2.0f, 1.0f}; //Positioned at (4, 0, 8)
@@ -54,12 +54,12 @@ Tester::Tester(int argc,char **argv) {
     glLightfv(GL_LIGHT0, GL_POSITION, lightPos0);
     
     
-   // GLfloat lightPos0[] = {1.0f, 1.0f, 1.0f, 1.0f}; //Positioned at (4, 0, 8)
+    //GLfloat lightPos0[] = {1.0f, 1.0f, 1.0f, 1.0f}; //Positioned at (4, 0, 8)
     
     //Add positioned ligt
     
-    GLfloat lightColor1[] = {0.1f, 0.8f, 0.1f, 1.0f}; //Color (0.1, 0.8, 0.1)
-    GLfloat lightPos1[] = {40.0f, 0.0f, -20.0f, 1.0f}; //Positioned at (-4, 0, -2)
+    GLfloat lightColor1[] = {1.0f, 1.0f, 1.0f, 1.0f}; //Color (0.1, 0.8, 0.1)
+    GLfloat lightPos1[] = {0.0f, 0.0f, 5.0f, 1.0f}; //Positioned at (-4, 0, -2)
     glLightfv(GL_LIGHT1, GL_DIFFUSE, lightColor1);
     glLightfv(GL_LIGHT1, GL_POSITION, lightPos1);
     
@@ -88,9 +88,14 @@ Tester::Tester(int argc,char **argv) {
     
     ground = new Ground();
     
-    fluid = new Fluid(3375, -1, -1, -1, 2);
-    
-    
+    // 1) Number of Particles
+    // 2) x Start Location
+    // 3) y Start Location
+    // 4) z Start Location
+    // 5) Box Length
+    // 6) Particle Mass
+    // 7) Particle Viscocity
+    fluid = new Fluid(500, -.5, -1, -.5, 1, 1, 0.001);
 
     
     Cam.SetAspect(float(WinX)/float(WinY));
@@ -170,8 +175,8 @@ void Tester::Keyboard(int key,int x,int y) {
 		case 0x1b:		// Escape
 			Quit();
 			break;
-		case 'z':
-			Reset();
+		case 'r':
+			fluid->Reset();
 			break;
 
     }

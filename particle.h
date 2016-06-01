@@ -20,36 +20,64 @@ class Particle {
     float Density;
     float Volume;
     float Pressure;
+    float SupportRadius;
+    float SmoothingRadius;
+    float Viscocity;
+    
+    Vector3 InitialPosition;
+    
+    float MaxVelocity;
     
     Vector3 Position;
     Vector3 Acceleration;
     Vector3 Force;
+    Vector3 Force_pressure;
+    Vector3 Force_viscocity;
+    Vector3 Force_other;
     Vector3 Velocity;
     Vector3 Momentum;
     Vector3 Normal;
     
     int xCell, yCell, zCell;
     
+    std::vector<Particle*> neighborsCells;
     std::vector<Particle*> neighbors;
     
     bool fixed;
+    bool neighborTag;
     
     
 public:
     
-    Particle(float, Vector3);
+    Particle(float, float, Vector3, float);
     void Update(float);
     void zeroNormal();
     void normalizeNormal();
     void addVecToNorm(Vector3);
     float GetMass();
+    float GetDensity();
+    float GetPressure();
     Vector3 GetPosition();
     Vector3 GetVelocity();
     Vector3 GetAcceleration();
     Vector3 GetMomentum();
     Vector3 GetNormal();
     
+    Vector3 Calculate_Q_PartialDerivate(Vector3);
+    
+    void Reset();
+
+    void CalculateForces();
+    void CalculatePressure();
+    void CalculatePressureForce();
+    void CalculateViscosityForce();
+    void CalculateOtherForce();
+    
+    float F_function(float);
+    float Fprime_function(float);
+    
     void setFixed(bool);
+    void setNeighborTag(bool);
 
     void Draw();
     void ApplyForce(Vector3);
@@ -58,6 +86,7 @@ public:
     void clearNeighbors();
     void addNeighbor(Particle*);
     void addNeighbor(std::vector<Particle*>*);
+    void filterNeighbors();
     
     Vector3 getCell();
     

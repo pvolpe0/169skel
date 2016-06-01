@@ -30,8 +30,8 @@ Field::Field( int quant, float xMin, float yMin, float zMin, float length) {
     z = zMin;
     
     
-    // why did i pick 2.0?
-    PosJump = 2.0 / cubeRoot;
+
+    PosJump = length / cubeRoot;
     
     for (int i = 0; i < cubeRoot; i++ ) {
         std::vector<std::vector< Cell* > > yzCells;
@@ -81,11 +81,11 @@ void Field::findCell(Particle * particle) {
     
     Vector3 pos = particle->GetPosition();
     
-    if (pos.y < 1 && pos.y > -1) {
+    if (pos.y < 0 && pos.y > -1) {
     
-        int xIndex = (pos.x + 1) * 5;
-        int yIndex = (pos.y + 1) * 5;
-        int zIndex = (pos.z + 1) * 5;
+        int xIndex = (pos.x + .5) * 10;
+        int yIndex = (pos.y + 1) * 10;
+        int zIndex = (pos.z + .5) * 10;
     
         addParticleToCell(particle, xIndex, yIndex, zIndex);
         
@@ -97,22 +97,22 @@ void Field::findNeighbors(Particle* particle) {
     Vector3 cell = particle->getCell();
     
     if (cell.x == -1)
-        return;
+     //   return;
     
     if (cell.y == 0)
         std::cout << "";
     
     for (int z = cell.z - 1; z <= cell.z + 1; z++ ) {
         
-        if (z < 0 || z > 9)
+        if (z < 0 || z > cubeRoot - 1)
             continue;
         for (int y = cell.y - 1; y <= cell.y + 1; y++) {
             
-            if (y < 0 || y > 9)
+            if (y < 0 || y > cubeRoot - 1)
                 continue;
             for (int x = cell.x - 1; x <= cell.x + 1; x++) {
                 
-                if (x < 0 || x > 9)
+                if (x < 0 || x > cubeRoot - 1)
                     continue;
              
                 Cell * adjCell = cells[x][y][z];
@@ -123,6 +123,8 @@ void Field::findNeighbors(Particle* particle) {
             }
         }
     }
+    
+    particle->filterNeighbors();
     
 }
 
@@ -145,6 +147,8 @@ void Field::Update() {
             }
         }
     }
+    
+    
     
 
 }

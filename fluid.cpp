@@ -7,11 +7,19 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 // mass
-Fluid::Fluid(int quantity, float xMin, float yMin, float zMin, float length) {
+Fluid::Fluid(int quantity, float xMin, float yMin, float zMin, float length, float mass, float viscocity) {
+    
+    
+    debug = 0;
+    
     
     NumParticles = quantity;
+    Mass = mass;
+    Viscocity = viscocity;
+    
+    
+    
     int cbroot = cbrt(NumParticles);
-    float mass = 1.0;
     this->length = length;
     
     this->xMin = xMin;
@@ -22,24 +30,41 @@ Fluid::Fluid(int quantity, float xMin, float yMin, float zMin, float length) {
     
     this->zMin = zMin;
     this->zMax = zMin + length;
+
+    int CellQuantity = 10000;
     
-    field = new Field(1000, xMin, yMin, zMin, length);
+    field = new Field(CellQuantity, xMin, yMin, zMin, length);
     float x, y, z;
+    
+    int CellQuantCbRt = cbrt(CellQuantity);
+    
+    float SupportRadius = length / CellQuantCbRt;
+    
+    
 
     
     
     for (int i = 0; i < NumParticles; i++) {
-        
-        x = RandomFloat(-1, 1);
-        y = RandomFloat(2.0, 3);
-        z = RandomFloat(-1, 1);
-        
-        particles.push_back(new Particle(mass, Vector3(x,y,z)));
+       
+    //  good
+        x = RandomFloat(-.075, .075);
+        y = RandomFloat(-0.3, -0.01);
+        z = RandomFloat(-.075, .075);
+  
+  
+       // x = RandomFloat(-0.005, 0.005);
+       // y = RandomFloat(2.0, 2.0);
+       // z = RandomFloat(-0.005, 0.005);
+    
+        particles.push_back(new Particle(mass, SupportRadius, Vector3(x,y,z), Viscocity));
 
     }
+
+
+
     
-    
-    particles[0]->setFixed(true);
+
+//    particles[debug]->setFixed(true);
 }
     
 float Fluid::RandomFloat(float a, float b) {
@@ -52,6 +77,13 @@ float Fluid::RandomFloat(float a, float b) {
     
 }
 
+void Fluid::Reset() {
+    
+    for (int i = 0; i < NumParticles; i++) {
+        particles[i]->Reset();
+    }
+}
+
 
 
 void Fluid::Draw() {
@@ -61,20 +93,22 @@ void Fluid::Draw() {
         particles[i]->Draw();
     }
     
-    field->Draw();
+    //field->Draw();
  }
 
 void Fluid::Update(float deltaTime) {
     
+ 
+   // particles[debug]->setFixed(true);
     
+    // clear cells
+    field->Update();
     // clear all neighbors
     for (int i = 0; i < NumParticles; i++) {
         
         particles[i]->clearNeighbors();
     }
     
-    // clear cells
-    field->Update();
     
     // place particles into cells
     
@@ -84,7 +118,7 @@ void Fluid::Update(float deltaTime) {
     
     }
     
-    particles[0]->printCell();
+
     
     // find neighbors
     for (int i = 0; i < NumParticles; i++) {
@@ -92,22 +126,20 @@ void Fluid::Update(float deltaTime) {
         field->findNeighbors( particles[i]);
     }
     
-    // Compute forces
-    
-    
-    
-    // Apply Gravity to each particle
-    Vector3 gravity(0,-9.8,0);
-    
+    // calculate pressure
     for (int i = 0; i < NumParticles; i++) {
-
-            
-            Vector3 force = gravity * particles[i]->GetMass(); // f=mg
-            particles[i]->ApplyForce(force);
-            particles[i]->zeroNormal();
-            
-    
+        
+        
+        particles[i]->CalculatePressure();
     }
+    
+    // calculate forces
+    for (int i = 0; i < NumParticles; i++) {
+        
+        particles[i]->CalculateForces();
+    }
+    
+    
     
     
 
@@ -121,6 +153,8 @@ void Fluid::Update(float deltaTime) {
             particles[i]->Update(deltaTime);
             
         }
+    
+     //  particles[debug]->setFixed(false);
     
 
 }

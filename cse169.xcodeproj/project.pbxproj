@@ -103,8 +103,14 @@
 			children = (
 				2CA53F6B0F1E9DEA00575E78 /* camera.cpp */,
 				2CA53F6C0F1E9DEA00575E78 /* camera.h */,
+				6EF6B8A71CFC1545002EFF7B /* cell.cpp */,
+				6EF6B8A61CFC14BE002EFF7B /* cell.h */,
 				2CA53F6D0F1E9DEA00575E78 /* core.cpp */,
 				2CA53F6E0F1E9DEA00575E78 /* core.h */,
+				6EF6B8A41CFBAE4F002EFF7B /* field.cpp */,
+				6EF6B8A31CFBACED002EFF7B /* field.h */,
+				6EF6B8A11CFB96F4002EFF7B /* fluid.cpp */,
+				6EF6B8A01CFB967B002EFF7B /* fluid.h */,
 				6E2227CA1CED47A700E7346F /* ground.cpp */,
 				6E2227C91CED468900E7346F /* ground.h */,
 				2CA53F710F1E9DEA00575E78 /* matrix34.cpp */,
@@ -121,12 +127,6 @@
 				6E744ED31CC3196B009D3F9C /* vertex.h */,
 				6E2227C71CECE00C00E7346F /* wind.cpp */,
 				6E2227C61CECDEDC00E7346F /* wind.h */,
-				6EF6B8A01CFB967B002EFF7B /* fluid.h */,
-				6EF6B8A11CFB96F4002EFF7B /* fluid.cpp */,
-				6EF6B8A31CFBACED002EFF7B /* field.h */,
-				6EF6B8A41CFBAE4F002EFF7B /* field.cpp */,
-				6EF6B8A61CFC14BE002EFF7B /* cell.h */,
-				6EF6B8A71CFC1545002EFF7B /* cell.cpp */,
 			);
 			name = Source;
 			sourceTree = "<group>";
