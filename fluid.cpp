@@ -10,7 +10,8 @@
 Fluid::Fluid(int quantity, float xMin, float yMin, float zMin, float length, float mass, float viscocity) {
     
     
-    debug = 0;
+    debug1 = 0;
+    debug2 = quantity - 1;
     
     
     NumParticles = quantity;
@@ -64,9 +65,11 @@ Fluid::Fluid(int quantity, float xMin, float yMin, float zMin, float length, flo
 
     
 
-//    particles[debug]->setFixed(true);
+    particles[debug1]->setFixed(true);
+   // particles[debug2]->setFixed(true);
+
 }
-    
+
 float Fluid::RandomFloat(float a, float b) {
         float random = ((float) rand()) / (float) RAND_MAX;
         float diff = b - a;
@@ -93,14 +96,16 @@ void Fluid::Draw() {
         particles[i]->Draw();
     }
     
-    //field->Draw();
+    field->Draw();
  }
 
 void Fluid::Update(float deltaTime) {
     
  
-   // particles[debug]->setFixed(true);
-    
+
+        particles[debug1]->setFixed(false);
+    //particles[debug2]->setFixed(false);
+
     // clear cells
     field->Update();
     // clear all neighbors
@@ -125,6 +130,11 @@ void Fluid::Update(float deltaTime) {
         
         field->findNeighbors( particles[i]);
     }
+    
+    
+        particles[debug1]->setFixed(true);
+       // particles[debug2]->setFixed(true);
+
     
     // calculate pressure
     for (int i = 0; i < NumParticles; i++) {

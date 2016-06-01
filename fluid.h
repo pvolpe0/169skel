@@ -31,7 +31,7 @@ class Fluid {
     float xMin, xMax, yMin, yMax, zMin, zMax;
     float length;
     
-    int debug;
+    int debug1, debug2;
     
     
     float RandomFloat(float, float);
