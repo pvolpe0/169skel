@@ -34,6 +34,7 @@ class Particle {
     Vector3 Force_pressure;
     Vector3 Force_viscocity;
     Vector3 Force_other;
+    Vector3 Force_sum;
     Vector3 Velocity;
     Vector3 Momentum;
     Vector3 Normal;

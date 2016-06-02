@@ -63,9 +63,11 @@ void Particle::Update( float deltaTime) {
     
     
     // repel field
-    if (Position.y <= -0.5) {
+    if (Position.y <= -0.7) {
         
-      //  ApplyForce(200000000000 * Vector3(0, -0.5 + Position.y , 0));
+        float value = pow((-0.7 - Position.y) / 0.3 , 2);
+        
+        ApplyForce(.8 * Vector3(0, -(1 + value) , 0));
     }
    
     
@@ -220,9 +222,9 @@ void Particle::CalculateForces() {
     
  //   Force_viscocity.Print();
     
-    Force = 10000000 * Force_pressure +  Force_viscocity + Force_other;
+    Force_sum = 10000000 * Force_pressure +  Force_viscocity + Force_other;
     
-    ApplyForce(Force);
+    ApplyForce(Force_sum);
     
 
 }
