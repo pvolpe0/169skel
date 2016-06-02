@@ -95,7 +95,7 @@ Tester::Tester(int argc,char **argv) {
     // 5) Box Length
     // 6) Particle Mass
     // 7) Particle Viscocity
-    fluid = new Fluid(700, -.5, -1, -.5, 1, 1, 1);
+    fluid = new Fluid(1000, -.5, -1, -.5, 1, 1, 1);
 
     
     Cam.SetAspect(float(WinX)/float(WinY));

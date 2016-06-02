@@ -41,6 +41,8 @@ Fluid::Fluid(int quantity, float xMin, float yMin, float zMin, float length, flo
     
     float SupportRadius = length / CellQuantCbRt;
     
+    SupportRadius /= 2;
+    
     
 
     

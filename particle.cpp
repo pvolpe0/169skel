@@ -62,7 +62,11 @@ void Particle::Update( float deltaTime) {
         Force.Zero();
     
     
-    
+    // repel field
+    if (Position.y <= -0.5) {
+        
+      //  ApplyForce(200000000000 * Vector3(0, -0.5 + Position.y , 0));
+    }
    
     
     
@@ -216,7 +220,7 @@ void Particle::CalculateForces() {
     
  //   Force_viscocity.Print();
     
-    Force = 1000000 * Force_pressure +  Force_viscocity + Force_other;
+    Force = 10000000 * Force_pressure +  Force_viscocity + Force_other;
     
     ApplyForce(Force);
     
@@ -267,10 +271,6 @@ float Particle::F_function(float q) {
     float f;
     
     
-    
-    
-    
-    
     // f(q)
     if (q >= 0 && q < 1) {
         
@@ -292,20 +292,7 @@ float Particle::F_function(float q) {
     } else {
         f = 0;
     }
-    
-    // f(q)
-    /*if (q >= 0 && q < 1) {
-        
-        float powr1 = pow(q,2);
 
-        float term1 = 1 - powr1;
-        float powr2 = pow(term1, 3);
-        
-        f = powr2;
-        
-    } else {
-        f = 0;
-    }*/
     
     f *= F_COEF;
     

@@ -102,15 +102,15 @@ void Field::findNeighbors(Particle* particle) {
     if (cell.y == 0)
         std::cout << "";
     
-    for (int z = cell.z - 1; z <= cell.z + 1; z++ ) {
+    for (int z = cell.z - 2; z <= cell.z + 2; z++ ) {
         
         if (z < 0 || z > cubeRoot - 1)
             continue;
-        for (int y = cell.y - 1; y <= cell.y + 1; y++) {
+        for (int y = cell.y - 2; y <= cell.y + 2; y++) {
             
             if (y < 0 || y > cubeRoot - 1)
                 continue;
-            for (int x = cell.x - 1; x <= cell.x + 1; x++) {
+            for (int x = cell.x - 2; x <= cell.x + 2; x++) {
                 
                 if (x < 0 || x > cubeRoot - 1)
                     continue;
